@@ -10,7 +10,13 @@ You don't have any simple way to get country code by it's name.
 
 Example
 -------------
-`var alpha2 = Iso3166Countries.GetAlpha2CodeByName("Russian Federation") // RU`
+```C#
+var countries = new Iso3166Countries();
+var alpha2 = countries.GetAlpha2CodeByName("Russian Federation"); // RU
+
+countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
+alpha2 = countries.GetAlpha2CodeByName("GREECE"); // GR
+```
 
 Install
 -------------

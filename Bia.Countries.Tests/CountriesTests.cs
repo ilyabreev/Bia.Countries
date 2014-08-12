@@ -1,19 +1,47 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using NUnit.Framework;
 
 namespace Bia.Countries.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class CountriesTests
     {
-        [TestMethod]
-        public void GetCodeByNameTest()
+        [Test]
+        [TestCase("Unexisting Country", null)]
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase(" ", null)]
+        [TestCase("United Kingdom", "GB")]
+        [TestCase("Russian Federation", "RU")]
+        [TestCase("Netherlands", "NL")]
+        [TestCase("Spain", "ES")]
+        [TestCase("Andorra", "AD")]
+        [TestCase("BELGIUM", null)]
+        [TestCase("RuSSiaN Federation", null)]
+        [TestCase("andorra", null)]
+        public void GetAlpha2CodeByName_Test(string countryName, string result)
         {
-            Assert.IsNull(Iso3166Countries.GetAlpha2CodeByName("Unexisting Country"));
-            Assert.AreEqual("GB", Iso3166Countries.GetAlpha2CodeByName("United Kingdom"));
-            Assert.AreEqual("RU", Iso3166Countries.GetAlpha2CodeByName("Russian Federation"));
-            Assert.AreEqual("NL", Iso3166Countries.GetAlpha2CodeByName("Netherlands"));
-            Assert.AreEqual("ES", Iso3166Countries.GetAlpha2CodeByName("Spain"));
-            Assert.AreEqual("AD", Iso3166Countries.GetAlpha2CodeByName("Andorra"));
+            var countries = new Iso3166Countries();
+            Assert.AreEqual(result, countries.GetAlpha2CodeByName(countryName));
+        }
+
+        [Test]
+        [TestCase("Unexisting Country", null)]
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase(" ", null)]
+        [TestCase("United Kingdom", "GB")]
+        [TestCase("Russian Federation", "RU")]
+        [TestCase("Netherlands", "NL")]
+        [TestCase("Spain", "ES")]
+        [TestCase("Andorra", "AD")]
+        [TestCase("BELGIUM", "BE")]
+        [TestCase("RuSSiaN Federation", "RU")]
+        [TestCase("andorra", "AD")]
+        public void GetAlpha2CodeByName_IgnoreCaseTest(string countryName, string result)
+        {
+            var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
+            Assert.AreEqual(result, countries.GetAlpha2CodeByName(countryName));
         }
     }
 }
