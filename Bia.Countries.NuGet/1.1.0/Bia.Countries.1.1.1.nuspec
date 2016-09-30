@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Bia.Countries</id>
-        <version>1.1.0</version>
+        <version>1.1.1</version>
         <title>ISO-3166 Country Codes</title>
         <authors>ilyabreev</authors>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -13,6 +13,6 @@
         <tags>iso iso3166 globalization internationalization</tags>
     </metadata>
     <files>
-        <file src="lib\net40\Bia.Countries.dll" target="lib\net40\Bia.Countries.dll" />
+        <file src="Bia.Countries.dll" target="lib\net40\Bia.Countries.dll" />
     </files>
 </package>
