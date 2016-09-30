@@ -269,7 +269,7 @@ namespace Bia.Countries
                 { "Uganda", new Iso3166Country { Name = "Uganda", Alpha2 = "UG", Alpha3 = "UGA", Numeric = 800 } },
                 { "Ukraine", new Iso3166Country { Name = "Ukraine", Alpha2 = "UA", Alpha3 = "UKR", Numeric = 804 } },
                 { "United Arab Emirates", new Iso3166Country { Name = "United Arab Emirates", Alpha2 = "AE", Alpha3 = "ARE", Numeric = 784 } },
-                { "United Kingdom", new Iso3166Country { Name = "United Kingdom", Alpha2 = "GB", Alpha3 = "GBR", Numeric = 826 } },
+                { "United Kingdom of Great Britain and Northern Ireland", new Iso3166Country { Name = "United Kingdom of Great Britain and Northern Ireland", Alpha2 = "GB", Alpha3 = "GBR", Numeric = 826 } },
                 { "United States", new Iso3166Country { Name = "United States", Alpha2 = "US", Alpha3 = "USA", Numeric = 840 } },
                 { "United States Minor Outlying Islands", new Iso3166Country { Name = "United States Minor Outlying Islands", Alpha2 = "UM", Alpha3 = "UMI", Numeric = 581 } },
                 { "Uruguay", new Iso3166Country { Name = "Uruguay", Alpha2 = "UY", Alpha3 = "URY", Numeric = 858 } },

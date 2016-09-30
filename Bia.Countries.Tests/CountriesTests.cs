@@ -6,12 +6,12 @@ namespace Bia.Countries.Tests
     [TestFixture]
     public class CountriesTests
     {
-        [Test]
         [TestCase("Unexisting Country", null)]
         [TestCase(null, null)]
         [TestCase("", null)]
         [TestCase(" ", null)]
-        [TestCase("United Kingdom", "GB")]
+        [TestCase("United Kingdom", null)]
+        [TestCase("United Kingdom of Great Britain and Northern Ireland", "GB")]
         [TestCase("Russian Federation", "RU")]
         [TestCase("Netherlands", "NL")]
         [TestCase("Spain", "ES")]
@@ -25,12 +25,12 @@ namespace Bia.Countries.Tests
             Assert.AreEqual(result, countries.GetAlpha2CodeByName(countryName));
         }
 
-        [Test]
         [TestCase("Unexisting Country", null)]
         [TestCase(null, null)]
         [TestCase("", null)]
         [TestCase(" ", null)]
-        [TestCase("United Kingdom", "GB")]
+        [TestCase("United Kingdom", null)]
+        [TestCase("UniTed KingdoM of GREAT Britain and NORTHERN Ireland", "GB")]
         [TestCase("Russian Federation", "RU")]
         [TestCase("Netherlands", "NL")]
         [TestCase("Spain", "ES")]
