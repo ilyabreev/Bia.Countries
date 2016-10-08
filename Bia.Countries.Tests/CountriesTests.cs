@@ -136,7 +136,7 @@ namespace Bia.Countries.Tests
         public void GetNumericCodeByName_Test(string countryName, string result)
         {
             var countries = new Iso3166Countries();
-            Assert.AreEqual(result, countries.GetMumericCodeByName(countryName));
+            Assert.AreEqual(result, countries.GetNumericCodeByName(countryName));
         }
 
         [TestCase("Unexisting Country", null)]
@@ -155,7 +155,7 @@ namespace Bia.Countries.Tests
         public void GetNumericCodeByName_IgnoreCaseTest(string countryName, string result)
         {
             var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
-            Assert.AreEqual(result, countries.GetMumericCodeByName(countryName));
+            Assert.AreEqual(result, countries.GetNumericCodeByName(countryName));
         }
     }
 }

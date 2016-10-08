@@ -61,7 +61,7 @@ namespace Bia.Countries
             return Countries[countryName].Alpha3;
         }
 
-        public int? GetMumericCodeByName(string countryName)
+        public int? GetNumericCodeByName(string countryName)
         {
             if (String.IsNullOrWhiteSpace(countryName))
             {
