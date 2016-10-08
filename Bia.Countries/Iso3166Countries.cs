@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bia.Countries
 {
@@ -19,6 +20,11 @@ namespace Bia.Countries
         public Dictionary<string, Iso3166Country> Countries
         {
             get { return _countries; }
+        }
+
+        public string[] GetCountryNames ()
+        {
+            return Countries.Keys.ToArray();
         }
 
         public bool IsNameValid(string countryName)
