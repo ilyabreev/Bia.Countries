@@ -21,6 +21,16 @@ namespace Bia.Countries
             get { return _countries; }
         }
 
+        public bool IsNameValid(string countryName)
+        {
+            if (!String.IsNullOrWhiteSpace(countryName) && Countries.ContainsKey(countryName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public string GetAlpha2CodeByName(string countryName)
         {
             if (String.IsNullOrWhiteSpace(countryName))
@@ -34,6 +44,36 @@ namespace Bia.Countries
             }
 
             return Countries[countryName].Alpha2;
+        }
+
+        public string GetAlpha3CodeByName(string countryName)
+        {
+            if (String.IsNullOrWhiteSpace(countryName))
+            {
+                return null;
+            }
+
+            if (!Countries.ContainsKey(countryName))
+            {
+                return null;
+            }
+
+            return Countries[countryName].Alpha3;
+        }
+
+        public int? GetMumericCodeByName(string countryName)
+        {
+            if (String.IsNullOrWhiteSpace(countryName))
+            {
+                return null;
+            }
+
+            if (!Countries.ContainsKey(countryName))
+            {
+                return null;
+            }
+
+            return Countries[countryName].Numeric;
         }
 
         private Dictionary<string, Iso3166Country> InitializeCountries(StringComparer comparer)
