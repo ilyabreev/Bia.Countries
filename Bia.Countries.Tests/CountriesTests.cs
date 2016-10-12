@@ -1,161 +1,138 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Bia.Countries.Tests
 {
     [TestFixture]
     public class CountriesTests
     {
-        [TestCase("Unexisting Country", false)]
-        [TestCase(null, false)]
-        [TestCase("", false)]
-        [TestCase(" ", false)]
-        [TestCase("United Kingdom", false)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", true)]
-        [TestCase("Russian Federation", true)]
-        [TestCase("Netherlands", true)]
-        [TestCase("Spain", true)]
-        [TestCase("Andorra", true)]
-        [TestCase("BELGIUM", false)]
-        [TestCase("RuSSiaN Federation", false)]
-        [TestCase("andorra", false)]
-        public void IsNameValid_Test(string countryName, string result)
+        [TestCase(null)]
+        [TestCase("foobar")]
+        [TestCase("")]
+        [TestCase(" ")]
+        public void NameAndAlpha_Test(string countryName)
         {
-            var countries = new Iso3166Countries();
-            Assert.AreEqual(result, countries.IsNameValid(countryName));
+            var shortNameQuery = Iso3166Countries.GetCountryByShortName(countryName);
+            Assert.IsNull(shortNameQuery);
+
+            var fullNameQuery = Iso3166Countries.GetCountryByFullName(countryName);
+            Assert.IsNull(fullNameQuery);
+
+            var adNameQuery = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
+            Assert.IsNull(adNameQuery);
+
+            var alpha2Query = Iso3166Countries.GetCountryByAlpha2(countryName);
+            Assert.IsNull(alpha2Query);
+
+            var alpha3Query = Iso3166Countries.GetCountryByAlpha3(countryName);
+            Assert.IsNull(alpha3Query);
         }
 
-        [TestCase("Unexisting Country", false)]
-        [TestCase(null, false)]
-        [TestCase("", false)]
-        [TestCase(" ", false)]
-        [TestCase("United Kingdom", false)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", true)]
-        [TestCase("Russian Federation", true)]
-        [TestCase("Netherlands", true)]
-        [TestCase("Spain", true)]
-        [TestCase("Andorra", true)]
-        [TestCase("BELGIUM", true)]
-        [TestCase("RuSSiaN Federation", true)]
-        [TestCase("andorra", true)]
-        public void IsNameValid_IgnoreCaseTest(string countryName, string result)
+        [TestCase(0)]
+        [TestCase(999)]
+        [TestCase(-4)]
+        [TestCase(null)]
+        public void Numeric_Test(int? number)
         {
-            var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
-            Assert.AreEqual(result, countries.IsNameValid(countryName));
+            var numericQuery = Iso3166Countries.GetCountryByNumeric(number);
+            Assert.IsNull(numericQuery);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", "GB")]
-        [TestCase("Russian Federation", "RU")]
-        [TestCase("Netherlands", "NL")]
-        [TestCase("Spain", "ES")]
-        [TestCase("Andorra", "AD")]
-        [TestCase("BELGIUM", null)]
-        [TestCase("RuSSiaN Federation", null)]
-        [TestCase("andorra", null)]
-        public void GetAlpha2CodeByName_Test(string countryName, string result)
+        [TestCase("Åland Islands")]
+        [TestCase("Côte d'Ivoire")]
+        [TestCase("Curaçao")]
+        [TestCase("United Kingdom of Great Britain and Northern Ireland")]
+        [TestCase("United States of America")]
+        [TestCase("Russian Federation")]
+        public void ShortName_Test(string countryName)
         {
-            var countries = new Iso3166Countries();
-            Assert.AreEqual(result, countries.GetAlpha2CodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByShortName(countryName);
+            Assert.IsNotNull(query);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("UniTed KingdoM of GREAT Britain and NORTHERN Ireland", "GB")]
-        [TestCase("Russian Federation", "RU")]
-        [TestCase("Netherlands", "NL")]
-        [TestCase("Spain", "ES")]
-        [TestCase("Andorra", "AD")]
-        [TestCase("BELGIUM", "BE")]
-        [TestCase("RuSSiaN Federation", "RU")]
-        [TestCase("andorra", "AD")]
-        public void GetAlpha2CodeByName_IgnoreCaseTest(string countryName, string result)
+        [TestCase("the Commonwealth of the Bahamas")]
+        [TestCase("the Republic of Cabo Verde")]
+        [TestCase("the People's Republic of China")]
+        [TestCase("the Federal Republic of Germany")]
+        [TestCase("the Republic of Namibia")]
+        [TestCase("the Bolivarian Republic of Venezuela")]
+        public void FullName_Test(string countryName)
         {
-            var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
-            Assert.AreEqual(result, countries.GetAlpha2CodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByFullName(countryName);
+            Assert.IsNotNull(query);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", "GBR")]
-        [TestCase("Russian Federation", "RUS")]
-        [TestCase("Netherlands", "NLD")]
-        [TestCase("Spain", "ESP")]
-        [TestCase("Andorra", "AND")]
-        [TestCase("BELGIUM", null)]
-        [TestCase("RuSSiaN Federation", null)]
-        [TestCase("andorra", null)]
-        public void GetAlpha3CodeByName_Test(string countryName, string result)
+        [TestCase("Baker Island")]
+        [TestCase("Hong Kong SAR")]
+        [TestCase("United Kingdom")]
+        [TestCase("United States")]
+        [TestCase("Russia")]
+        public void ActiveDirectoryName_Test(string countryName)
         {
-            var countries = new Iso3166Countries();
-            Assert.AreEqual(result, countries.GetAlpha3CodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
+            Assert.IsNotNull(query);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("UniTed KingdoM of GREAT Britain and NORTHERN Ireland", "GBR")]
-        [TestCase("Russian Federation", "RUS")]
-        [TestCase("Netherlands", "NLD")]
-        [TestCase("Spain", "ESP")]
-        [TestCase("Andorra", "AND")]
-        [TestCase("BELGIUM", "BEL")]
-        [TestCase("RuSSiaN Federation", "RUS")]
-        [TestCase("andorra", "AND")]
-        public void GetAlpha3CodeByName_IgnoreCaseTest(string countryName, string result)
+        [TestCase("GB")]
+        [TestCase("US")]
+        [TestCase("RU")]
+        public void ActiveDirectoryAlpha2_Test(string code)
         {
-            var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
-            Assert.AreEqual(result, countries.GetAlpha3CodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByAlpha2(code);
+            Assert.IsNotNull(query);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", 826)]
-        [TestCase("Russian Federation", 643)]
-        [TestCase("Netherlands", 528)]
-        [TestCase("Spain", 724)]
-        [TestCase("Andorra", 20)]
-        [TestCase("BELGIUM", null)]
-        [TestCase("RuSSiaN Federation", null)]
-        [TestCase("andorra", null)]
-        public void GetNumericCodeByName_Test(string countryName, string result)
+        [TestCase("GBR")]
+        [TestCase("USA")]
+        [TestCase("RUS")]
+        public void ActiveDirectoryAlpha3_Test(string code)
         {
-            var countries = new Iso3166Countries();
-            Assert.AreEqual(result, countries.GetNumericCodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByAlpha3(code);
+            Assert.IsNotNull(query);
         }
 
-        [TestCase("Unexisting Country", null)]
-        [TestCase(null, null)]
-        [TestCase("", null)]
-        [TestCase(" ", null)]
-        [TestCase("United Kingdom", null)]
-        [TestCase("United Kingdom of Great Britain and Northern Ireland", 826)]
-        [TestCase("Russian Federation", 643)]
-        [TestCase("Netherlands", 528)]
-        [TestCase("Spain", 724)]
-        [TestCase("Andorra", 20)]
-        [TestCase("BELGIUM", 56)]
-        [TestCase("RuSSiaN Federation", 643)]
-        [TestCase("andorra", 20)]
-        public void GetNumericCodeByName_IgnoreCaseTest(string countryName, string result)
+        [TestCase(826)]
+        [TestCase(840)]
+        [TestCase(643)]
+        public void ActiveDirectoryNumeric_Test(int code)
         {
-            var countries = new Iso3166Countries(StringComparer.OrdinalIgnoreCase);
-            Assert.AreEqual(result, countries.GetNumericCodeByName(countryName));
+            var query = Iso3166Countries.GetCountryByNumeric(code);
+            Assert.IsNotNull(query);
+        }
+
+        [TestCase(null, 0)]
+        [TestCase("foobar", 0)]
+        [TestCase("rico", 1)]
+        [TestCase("congo", 2)]
+        [TestCase("land", 29)]
+        public void PartialShortName_Test(string countryName, int result)
+        {
+            var query = Iso3166Countries.GetCountryByPartialShortName(countryName);
+            Assert.IsNotNull(query);
+            Assert.AreEqual(query.Count, result);
+        }
+
+        [TestCase(null, 0)]
+        [TestCase("foobar", 0)]
+        [TestCase("federation", 2)]
+        [TestCase("kingdom", 17)]
+        [TestCase("republic", 128)]
+        public void PartialFullName_Test(string countryName, int result)
+        {
+            var query = Iso3166Countries.GetCountryByPartialFullName(countryName);
+            Assert.IsNotNull(query);
+            Assert.AreEqual(query.Count, result);
+        }
+
+        [TestCase(null, 0)]
+        [TestCase("foobar", 0)]
+        [TestCase("Bahamas", 1)]
+        [TestCase("British", 2)]
+        [TestCase("island", 25)]
+        public void PartialActiveDirectoryName_Test(string countryName, int result)
+        {
+            var query = Iso3166Countries.GetCountryByPartialActiveDirectoryName(countryName);
+            Assert.IsNotNull(query);
+            Assert.AreEqual(query.Count, result);
         }
     }
 }
