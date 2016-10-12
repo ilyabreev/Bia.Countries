@@ -1,12 +1,23 @@
-Bia.Countries
-=============
+# [Bia.Countries]
 
 ISO-3166-1 country codes for .NET.
 
-This library provides easy way to query countries by ISO-3166-1 short name, full name, alpha 2, alpha 3 and numeric codes. In addition the library also includes country names as seen in Microsoft [Active Directory] Users and Computers (ADUC) on Windows Server 2012 R2.
+This library provides easy way to query countries by their ISO-3166-1 short name, full name, alpha 2, alpha 3 and numeric codes.
 
-C# example
--------------
+
+### [Active Directory]
+
+The library also includes country names as seen in Microsoft Active Directory Users and Computers (ADUC) on Windows Server 2012 R2. Several countries were added to the library that do not exist in, or have since been removed from ISO-3166-1. Such countries will have only ActiveDirectoryName, Alpha2 and Numeric properties. ShortName, FullName and Alpha3 properties are null to prevent them from appearing in most queries targeted for ISO-3166-1.
+
+Here are some examples of differences between ActiveDirectoryName and ISO-3166-1 ShortName properties:
+* ActiveDirectoryName: Cape Verde, ShortName: Cabo Verde
+* ActiveDirectoryName: Korea, ShortName: Korea, Republic of
+* ActiveDirectoryName: United Kingdom, ShortName: United Kingdom of Great Britain and Northern Ireland
+* ActiveDirectoryName: United States, ShortName: United States of America
+* ActiveDirectoryName: Russia, ShortName: Russian Federation
+
+### C# example
+
 ```C#
 // Iso3166Countries is a static class, no need to instantiate.
 
@@ -55,8 +66,8 @@ List<Iso3166Country> kingdoms = Iso3166Countries.GetCountryByPartialFullName("ki
 List<Iso3166Country> islands = Iso3166Countries.GetCountryByPartialActiveDirectoryName("island");
 ```
 
-PowerShell example
--------------
+### PowerShell example
+
 ```PowerShell
 # Use Import-Module to load Bia.Countries.dll.
 Import-Module 'C:\Path\To\Bia.Countries.dll'
@@ -94,17 +105,24 @@ $alpha3 = $uk.Alpha3
 $numeric = $uk.Numeric
 ```
 
-Install
--------------
-[NuGet]: `Install-Package Bia.Countries` (Not up-to-date yet)
+### Install / Download
 
-[PowerShell Gallery]: `Install-Package Bia.Countries` (Not available yet)
+* [NuGet] (Not up-to-date yet)
 
-Resources
--------------
-[iso.org](https://www.iso.org/obp/ui/#search/code/)
+* [PowerShell Gallery] (Not available yet)
 
+* [Download as zip] (Not up-to-date yet)
+  - Up-to-date zip-download available at [KeeperB5's fork].
+
+### Resources
+
+* [iso.org Online Browsing Platform](https://www.iso.org/obp/ui/#search/code/)
+  - The Online Browsing Platform has a notification feature that can notify you of changes. 'Sig-in' or 'Register' and then select 'Follow' when listing country codes.
+
+[Bia.Countries]:https://github.com/ilyabreev/Bia.Countries
 [ISO-3166-1]:https://en.wikipedia.org/wiki/ISO_3166-1
 [Active Directory]:https://en.wikipedia.org/wiki/Active_Directory
 [NuGet]:https://www.nuget.org/packages/Bia.Countries/
 [PowerShell Gallery]:https://www.powershellgallery.com/
+[Download as zip]:https://github.com/ilyabreev/Bia.Countries/releases
+[KeeperB5's fork]: https://github.com/KeeperB5/Bia.Countries/releases
