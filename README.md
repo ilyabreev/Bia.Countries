@@ -107,11 +107,14 @@ $numeric = $uk.Numeric
 
 ### Install / Download
 
-* [NuGet] (Not up-to-date yet)
+* [NuGet]
+  - Not up-to-date yet.
 
-* [PowerShell Gallery] (Not available yet)
+* [PowerShell Gallery]
+  - Not available yet.
 
-* [Download as zip] (Not up-to-date yet)
+* [Download as zip]
+  - Not up-to-date yet.
   - Up-to-date zip-download available at [KeeperB5's fork].
 
 ### Resources
