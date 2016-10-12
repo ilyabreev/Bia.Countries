@@ -103,6 +103,18 @@ $adName = $uk.ActiveDirectoryName
 $alpha2 = $uk.Alpha2
 $alpha3 = $uk.Alpha3
 $numeric = $uk.Numeric
+
+# Get indeterminate number of countries that have partial, case insensitive match in ISO-3166-1 short name.
+# There are 29 countries that have string "land" in ISO-3166-1 short name.
+$lands = [Bia.Countries.Iso3166Countries]::GetCountryByPartialShortName("land")
+
+# Get indeterminate number of countries that have partial, case insensitive match in ISO-3166-1 full name.
+# There are 17 countries that have string "kingdom" in ISO-3166-1 full name.
+$kingdoms = [Bia.Countries.Iso3166Countries]::GetCountryByPartialFullName("kingdom")
+
+# Get indeterminate number of countries that have partial, case insensitive match in Active Directory name.
+# There are 25 countries that have string "island" in Active Directory name.
+$islands = [Bia.Countries.Iso3166Countries]::GetCountryByPartialActiveDirectoryName("island")
 ```
 
 ### Install / Download
