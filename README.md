@@ -117,17 +117,10 @@ $kingdoms = [Bia.Countries.Iso3166Countries]::GetCountryByPartialFullName("kingd
 $islands = [Bia.Countries.Iso3166Countries]::GetCountryByPartialActiveDirectoryName("island")
 ```
 
-### Install / Download
+### Install
 
-* [NuGet]
-  - Not up-to-date yet.
-
-* [PowerShell Gallery]
-  - Not available yet.
-
-* [Download as zip]
-  - Not up-to-date yet.
-  - Up-to-date zip-download available at [KeeperB5's fork].
+* [NuGet](https://www.nuget.org/packages/Bia.Countries/)
+* [PowerShell Gallery](https://www.powershellgallery.com/packages/Bia.Countries/)
 
 ### Resources
 
