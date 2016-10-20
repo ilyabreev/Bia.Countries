@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Bia.Countries</id>
+        <version>2.0.0</version>
+        <title>ISO-3166 Country Codes</title>
+        <authors>ilyabreev</authors>
+        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/ilyabreev/Bia.Countries</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Easy support for ISO-3166 country codes in .NET framework.</description>
+        <language>en-US</language>
+        <tags>iso iso3166 globalization internationalization</tags>
+    </metadata>
+    <files>
+        <file src="Bia.Countries.dll" target="lib\net40\Bia.Countries.dll" />
+    </files>
+</package>
