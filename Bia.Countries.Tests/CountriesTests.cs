@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 
 namespace Bia.Countries.Tests
 {
@@ -133,6 +134,13 @@ namespace Bia.Countries.Tests
             var query = Iso3166Countries.GetCountryByPartialActiveDirectoryName(countryName);
             Assert.IsNotNull(query);
             Assert.AreEqual(query.Count, result);
+        }
+
+        [Test]
+        public void SingleCountryForEachAlpha2Code()
+        {
+            var countries = Iso3166Countries.Countries.Cast<Iso3166Country>();
+            Assert.IsTrue(countries.Where(c => c.Alpha2 != "XX").GroupBy(c => c.Alpha2).All(g => g.Count() == 1));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Bia.Countries
 {
-    static public partial class Iso3166Countries
+    public static partial class Iso3166Countries
     {
         // Get all short names.
         public static List<string> GetAllShortNames()

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Bia.Countries
 {
-    static public partial class Iso3166Countries
+    public static partial class Iso3166Countries
     {
         public static readonly ReadOnlyCollection<Iso3166Country> Countries = new List<Iso3166Country>()
         {
@@ -1988,18 +1988,9 @@ namespace Bia.Countries
             ),
 
             new Iso3166Country(
-                shortName: null,
-                fullName: null,
-                activeDirectoryName: "Svalbard",
-                alpha2: "SJ",
-                alpha3: null,
-                numeric: 744
-            ),
-
-            new Iso3166Country(
                 shortName: "Svalbard and Jan Mayen",
                 fullName: null,
-                activeDirectoryName: null,
+                activeDirectoryName: "Svalbard",
                 alpha2: "SJ",
                 alpha3: "SJM",
                 numeric: 744
