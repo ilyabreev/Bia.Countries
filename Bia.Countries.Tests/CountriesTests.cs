@@ -3,6 +3,8 @@ using NUnit.Framework;
 
 namespace Bia.Countries.Tests
 {
+    using Bia.Countries.Iso3166;
+
     [TestFixture]
     public class CountriesTests
     {
@@ -12,19 +14,19 @@ namespace Bia.Countries.Tests
         [TestCase(" ")]
         public void NameAndAlphaTest(string countryName)
         {
-            var shortNameQuery = Iso3166Countries.GetCountryByShortName(countryName);
+            var shortNameQuery = Countries.GetCountryByShortName(countryName);
             Assert.IsNull(shortNameQuery);
 
-            var fullNameQuery = Iso3166Countries.GetCountryByFullName(countryName);
+            var fullNameQuery = Countries.GetCountryByFullName(countryName);
             Assert.IsNull(fullNameQuery);
 
-            var activeDirectoryName = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
+            var activeDirectoryName = Countries.GetCountryByActiveDirectoryName(countryName);
             Assert.IsNull(activeDirectoryName);
 
-            var alpha2Query = Iso3166Countries.GetCountryByAlpha2(countryName);
+            var alpha2Query = Countries.GetCountryByAlpha2(countryName);
             Assert.IsNull(alpha2Query);
 
-            var alpha3Query = Iso3166Countries.GetCountryByAlpha3(countryName);
+            var alpha3Query = Countries.GetCountryByAlpha3(countryName);
             Assert.IsNull(alpha3Query);
         }
 
@@ -34,7 +36,7 @@ namespace Bia.Countries.Tests
         [TestCase(null)]
         public void NumericTest(int? number)
         {
-            var numericQuery = Iso3166Countries.GetCountryByNumeric(number);
+            var numericQuery = Countries.GetCountryByNumeric(number);
             Assert.IsNull(numericQuery);
         }
 
@@ -46,7 +48,7 @@ namespace Bia.Countries.Tests
         [TestCase("Russian Federation")]
         public void ShortNameTest(string countryName)
         {
-            var query = Iso3166Countries.GetCountryByShortName(countryName);
+            var query = Countries.GetCountryByShortName(countryName);
             Assert.IsNotNull(query);
         }
 
@@ -58,7 +60,7 @@ namespace Bia.Countries.Tests
         [TestCase("the Bolivarian Republic of Venezuela")]
         public void FullNameTest(string countryName)
         {
-            var query = Iso3166Countries.GetCountryByFullName(countryName);
+            var query = Countries.GetCountryByFullName(countryName);
             Assert.IsNotNull(query);
         }
 
@@ -69,7 +71,7 @@ namespace Bia.Countries.Tests
         [TestCase("Russia")]
         public void ActiveDirectoryNameTest(string countryName)
         {
-            var query = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
+            var query = Countries.GetCountryByActiveDirectoryName(countryName);
             Assert.IsNotNull(query);
         }
 
@@ -78,7 +80,7 @@ namespace Bia.Countries.Tests
         [TestCase("RU")]
         public void ActiveDirectoryAlpha2Test(string code)
         {
-            var query = Iso3166Countries.GetCountryByAlpha2(code);
+            var query = Countries.GetCountryByAlpha2(code);
             Assert.IsNotNull(query);
         }
 
@@ -87,7 +89,7 @@ namespace Bia.Countries.Tests
         [TestCase("RUS")]
         public void ActiveDirectoryAlpha3Test(string code)
         {
-            var query = Iso3166Countries.GetCountryByAlpha3(code);
+            var query = Countries.GetCountryByAlpha3(code);
             Assert.IsNotNull(query);
         }
 
@@ -96,7 +98,7 @@ namespace Bia.Countries.Tests
         [TestCase(643)]
         public void ActiveDirectoryNumericTest(int code)
         {
-            var query = Iso3166Countries.GetCountryByNumeric(code);
+            var query = Countries.GetCountryByNumeric(code);
             Assert.IsNotNull(query);
         }
 
@@ -107,7 +109,7 @@ namespace Bia.Countries.Tests
         [TestCase("land", 29)]
         public void PartialShortNameTest(string countryName, int result)
         {
-            var query = Iso3166Countries.GetCountryByPartialShortName(countryName);
+            var query = Countries.GetCountryByPartialShortName(countryName);
             Assert.IsNotNull(query);
             Assert.AreEqual(query.Count, result);
         }
@@ -119,7 +121,7 @@ namespace Bia.Countries.Tests
         [TestCase("republic", 128)]
         public void PartialFullNameTest(string countryName, int result)
         {
-            var query = Iso3166Countries.GetCountryByPartialFullName(countryName);
+            var query = Countries.GetCountryByPartialFullName(countryName);
             Assert.IsNotNull(query);
             Assert.AreEqual(query.Count, result);
         }
@@ -131,7 +133,7 @@ namespace Bia.Countries.Tests
         [TestCase("island", 25)]
         public void PartialActiveDirectoryNameTest(string countryName, int result)
         {
-            var query = Iso3166Countries.GetCountryByPartialActiveDirectoryName(countryName);
+            var query = Countries.GetCountryByPartialActiveDirectoryName(countryName);
             Assert.IsNotNull(query);
             Assert.AreEqual(query.Count, result);
         }
@@ -139,7 +141,7 @@ namespace Bia.Countries.Tests
         [Test]
         public void SingleCountryForEachAlpha2Code()
         {
-            var countries = Iso3166Countries.Countries.Cast<Iso3166Country>();
+            var countries = Countries.CountryList.Cast<Country>();
             Assert.IsTrue(countries.Where(c => c.Alpha2 != "XX").GroupBy(c => c.Alpha2).All(g => g.Count() == 1));
         }
     }

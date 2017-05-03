@@ -1,8 +1,8 @@
-namespace Bia.Countries
+namespace Bia.Countries.Iso3166
 {
-    public class Iso3166Country
+    public class Country
     {
-        public Iso3166Country(string shortName, string fullName, string activeDirectoryName, string alpha2, string alpha3, int? numeric)
+        public Country(string shortName, string fullName, string activeDirectoryName, string alpha2, string alpha3, int? numeric)
         {
             ShortName = shortName;
             FullName = fullName;
