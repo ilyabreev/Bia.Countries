@@ -142,7 +142,7 @@ namespace Bia.Countries.Tests
         public void SingleCountryForEachAlpha2Code()
         {
             var countries = Countries.CountryList.Cast<Country>();
-            Assert.IsTrue(countries.Where(c => c.Alpha2 != "XX").GroupBy(c => c.Alpha2).All(g => g.Count() == 1));
+            Assert.IsTrue(countries.Where(c => c.Alpha2 != null).GroupBy(c => c.Alpha2).All(g => g.Count() == 1));
         }
     }
 }

@@ -137,7 +137,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Baker Island",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -718,7 +718,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Howland Island",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -809,7 +809,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Jarvis Island",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -823,7 +823,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Johnston Atoll",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -851,7 +851,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Kingman Reef",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -1061,7 +1061,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Midway Islands",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -1243,7 +1243,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Palmyra Atoll",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
@@ -1775,7 +1775,7 @@
                 shortName: null,
                 fullName: null,
                 activeDirectoryName: "Wake Island",
-                alpha2: "XX",
+                alpha2: null,
                 alpha3: null,
                 numeric: 581),
             new Country(
