@@ -10,7 +10,7 @@ namespace Bia.Countries.Tests
         [TestCase("foobar")]
         [TestCase("")]
         [TestCase(" ")]
-        public void NameAndAlpha_Test(string countryName)
+        public void NameAndAlphaTest(string countryName)
         {
             var shortNameQuery = Iso3166Countries.GetCountryByShortName(countryName);
             Assert.IsNull(shortNameQuery);
@@ -18,8 +18,8 @@ namespace Bia.Countries.Tests
             var fullNameQuery = Iso3166Countries.GetCountryByFullName(countryName);
             Assert.IsNull(fullNameQuery);
 
-            var adNameQuery = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
-            Assert.IsNull(adNameQuery);
+            var activeDirectoryName = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
+            Assert.IsNull(activeDirectoryName);
 
             var alpha2Query = Iso3166Countries.GetCountryByAlpha2(countryName);
             Assert.IsNull(alpha2Query);
@@ -32,7 +32,7 @@ namespace Bia.Countries.Tests
         [TestCase(999)]
         [TestCase(-4)]
         [TestCase(null)]
-        public void Numeric_Test(int? number)
+        public void NumericTest(int? number)
         {
             var numericQuery = Iso3166Countries.GetCountryByNumeric(number);
             Assert.IsNull(numericQuery);
@@ -44,7 +44,7 @@ namespace Bia.Countries.Tests
         [TestCase("United Kingdom of Great Britain and Northern Ireland")]
         [TestCase("United States of America")]
         [TestCase("Russian Federation")]
-        public void ShortName_Test(string countryName)
+        public void ShortNameTest(string countryName)
         {
             var query = Iso3166Countries.GetCountryByShortName(countryName);
             Assert.IsNotNull(query);
@@ -56,7 +56,7 @@ namespace Bia.Countries.Tests
         [TestCase("the Federal Republic of Germany")]
         [TestCase("the Republic of Namibia")]
         [TestCase("the Bolivarian Republic of Venezuela")]
-        public void FullName_Test(string countryName)
+        public void FullNameTest(string countryName)
         {
             var query = Iso3166Countries.GetCountryByFullName(countryName);
             Assert.IsNotNull(query);
@@ -67,7 +67,7 @@ namespace Bia.Countries.Tests
         [TestCase("United Kingdom")]
         [TestCase("United States")]
         [TestCase("Russia")]
-        public void ActiveDirectoryName_Test(string countryName)
+        public void ActiveDirectoryNameTest(string countryName)
         {
             var query = Iso3166Countries.GetCountryByActiveDirectoryName(countryName);
             Assert.IsNotNull(query);
@@ -76,7 +76,7 @@ namespace Bia.Countries.Tests
         [TestCase("GB")]
         [TestCase("US")]
         [TestCase("RU")]
-        public void ActiveDirectoryAlpha2_Test(string code)
+        public void ActiveDirectoryAlpha2Test(string code)
         {
             var query = Iso3166Countries.GetCountryByAlpha2(code);
             Assert.IsNotNull(query);
@@ -85,7 +85,7 @@ namespace Bia.Countries.Tests
         [TestCase("GBR")]
         [TestCase("USA")]
         [TestCase("RUS")]
-        public void ActiveDirectoryAlpha3_Test(string code)
+        public void ActiveDirectoryAlpha3Test(string code)
         {
             var query = Iso3166Countries.GetCountryByAlpha3(code);
             Assert.IsNotNull(query);
@@ -94,7 +94,7 @@ namespace Bia.Countries.Tests
         [TestCase(826)]
         [TestCase(840)]
         [TestCase(643)]
-        public void ActiveDirectoryNumeric_Test(int code)
+        public void ActiveDirectoryNumericTest(int code)
         {
             var query = Iso3166Countries.GetCountryByNumeric(code);
             Assert.IsNotNull(query);
@@ -105,7 +105,7 @@ namespace Bia.Countries.Tests
         [TestCase("rico", 1)]
         [TestCase("congo", 2)]
         [TestCase("land", 29)]
-        public void PartialShortName_Test(string countryName, int result)
+        public void PartialShortNameTest(string countryName, int result)
         {
             var query = Iso3166Countries.GetCountryByPartialShortName(countryName);
             Assert.IsNotNull(query);
@@ -117,7 +117,7 @@ namespace Bia.Countries.Tests
         [TestCase("federation", 2)]
         [TestCase("kingdom", 17)]
         [TestCase("republic", 128)]
-        public void PartialFullName_Test(string countryName, int result)
+        public void PartialFullNameTest(string countryName, int result)
         {
             var query = Iso3166Countries.GetCountryByPartialFullName(countryName);
             Assert.IsNotNull(query);
@@ -129,7 +129,7 @@ namespace Bia.Countries.Tests
         [TestCase("Bahamas", 1)]
         [TestCase("British", 2)]
         [TestCase("island", 25)]
-        public void PartialActiveDirectoryName_Test(string countryName, int result)
+        public void PartialActiveDirectoryNameTest(string countryName, int result)
         {
             var query = Iso3166Countries.GetCountryByPartialActiveDirectoryName(countryName);
             Assert.IsNotNull(query);

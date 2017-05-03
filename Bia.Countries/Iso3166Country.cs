@@ -12,12 +12,17 @@ namespace Bia.Countries
             Numeric = numeric;
         }
 
-        public string ShortName { get; private set; }
-        public string FullName { get; private set; }
-        public string ActiveDirectoryName { get; private set; }
-        public string Alpha2 { get; private set; }
-        public string Alpha3 { get; private set; }
-        public int? Numeric { get; private set; }
+        public string ShortName { get; }
+
+        public string FullName { get; }
+
+        public string ActiveDirectoryName { get; }
+
+        public string Alpha2 { get; }
+
+        public string Alpha3 { get; }
+
+        public int? Numeric { get; }
 
         public override string ToString()
         {
@@ -25,30 +30,33 @@ namespace Bia.Countries
             {
                 return ShortName;
             }
-            else if (!string.IsNullOrWhiteSpace(ActiveDirectoryName))
+
+            if (!string.IsNullOrWhiteSpace(ActiveDirectoryName))
             {
                 return ActiveDirectoryName;
             }
-            else if (!string.IsNullOrWhiteSpace(FullName))
+
+            if (!string.IsNullOrWhiteSpace(FullName))
             {
                 return FullName;
             }
-            else if (!string.IsNullOrWhiteSpace(Alpha2))
+
+            if (!string.IsNullOrWhiteSpace(Alpha2))
             {
                 return Alpha2;
             }
-            else if (!string.IsNullOrWhiteSpace(Alpha3))
+
+            if (!string.IsNullOrWhiteSpace(Alpha3))
             {
                 return Alpha3;
             }
-            else if (Numeric != null)
+
+            if (Numeric != null)
             {
                 return Numeric.GetValueOrDefault().ToString();
             }
-            else
-            {
-                return "";
-            }
+
+            return "";
         }
     }
 }

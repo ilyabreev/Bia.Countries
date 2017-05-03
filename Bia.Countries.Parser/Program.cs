@@ -6,9 +6,9 @@ using HtmlAgilityPack;
 
 namespace Bia.Countries.Parser
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var webClient = new WebClient();
             var page = webClient.DownloadString("https://en.wikipedia.org/wiki/ISO_3166-1");
@@ -26,14 +26,13 @@ namespace Bia.Countries.Parser
                     var alpha2 = columns[1].SelectSingleNode("a/tt").InnerText;
                     var alpha3 = columns[2].SelectSingleNode("tt").InnerText;
                     var numeric = Convert.ToInt32(columns[3].SelectSingleNode("tt").InnerText);
-                    File.AppendAllText("countries.txt",
-                        String.Format("{{ \"{0}\", new Country {{ Name = \"{1}\", Alpha2 = \"{2}\", Alpha3 = \"{3}\", Numeric = {4} }} }},\r\n",
-                        countryName, countryName, alpha2, alpha3, numeric));
-
+                    File.AppendAllText(
+                        "countries.txt",
+                        $"{{ \"{countryName}\", new Country {{ Name = \"{countryName}\", Alpha2 = \"{alpha2}\", Alpha3 = \"{alpha3}\", Numeric = {numeric} }} }},\r\n");
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    continue;
+                    Console.WriteLine($"Error: {e.Message}");
                 }
             }
         }
