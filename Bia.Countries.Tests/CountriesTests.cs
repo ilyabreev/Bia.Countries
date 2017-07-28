@@ -75,10 +75,42 @@ namespace Bia.Countries.Tests
             Assert.IsNotNull(query);
         }
 
+        [TestCase(CountryCode.GB)]
+        [TestCase(CountryCode.US)]
+        [TestCase(CountryCode.RU)]
+        public void ActiveDirectoryAlpha2EnumTest(CountryCode code)
+        {
+            var query = Countries.GetCountryByAlpha2(code);
+            Assert.IsNotNull(query);
+        }
+
+        [TestCase(CountryCodeAlpha3.GBR)]
+        [TestCase(CountryCodeAlpha3.USA)]
+        [TestCase(CountryCodeAlpha3.RUS)]
+        public void ActiveDirectoryAlpha3EnumTest(CountryCodeAlpha3 code)
+        {
+            var query = Countries.GetCountryByAlpha3(code);
+            Assert.IsNotNull(query);
+        }
+
+        [Test]
+        public void ActiveDirectoryAlpha2EnumNoneTest()
+        {
+            var query = Countries.GetCountryByAlpha2(CountryCode.None);
+            Assert.IsNull(query);
+        }
+
+        [Test]
+        public void ActiveDirectoryAlpha3EnumNoneTest()
+        {
+            var query = Countries.GetCountryByAlpha3(CountryCodeAlpha3.None);
+            Assert.IsNull(query);
+        }
+
         [TestCase("GB")]
         [TestCase("US")]
         [TestCase("RU")]
-        public void ActiveDirectoryAlpha2Test(string code)
+        public void ActiveDirectoryAlpha2StringTest(string code)
         {
             var query = Countries.GetCountryByAlpha2(code);
             Assert.IsNotNull(query);
@@ -87,7 +119,7 @@ namespace Bia.Countries.Tests
         [TestCase("GBR")]
         [TestCase("USA")]
         [TestCase("RUS")]
-        public void ActiveDirectoryAlpha3Test(string code)
+        public void ActiveDirectoryAlpha3StringTest(string code)
         {
             var query = Countries.GetCountryByAlpha3(code);
             Assert.IsNotNull(query);
@@ -142,7 +174,10 @@ namespace Bia.Countries.Tests
         public void SingleCountryForEachAlpha2Code()
         {
             var countries = Countries.CountryList.Cast<Country>();
-            Assert.IsTrue(countries.Where(c => c.Alpha2 != null).GroupBy(c => c.Alpha2).All(g => g.Count() == 1));
+            Assert.IsTrue(countries
+                .Where(c => c.Alpha2 != CountryCode.None)
+                .GroupBy(c => c.Alpha2)
+                .All(g => g.Count() == 1));
         }
     }
 }

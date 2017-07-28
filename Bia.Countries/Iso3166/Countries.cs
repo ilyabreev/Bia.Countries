@@ -84,6 +84,28 @@
             return CountryList.Where(c => c.ActiveDirectoryName != null && CultureInfo.CurrentCulture.CompareInfo.IndexOf(c.ActiveDirectoryName, countryName, CompareOptions.OrdinalIgnoreCase) >= 0).ToList();
         }
 
+        // Get country by alpha2 code.
+        public static Country GetCountryByAlpha2(CountryCode code)
+        {
+            if (code == CountryCode.None)
+            {
+                return null;
+            }
+
+            return CountryList.FirstOrDefault(c => c.Alpha2 == code);
+        }
+
+        // Get country by alpha3 code.
+        public static Country GetCountryByAlpha3(CountryCodeAlpha3 code)
+        {
+            if (code == CountryCodeAlpha3.None)
+            {
+                return null;
+            }
+
+            return CountryList.FirstOrDefault(c => c.Alpha3 == code);
+        }
+
         // Get country by alpha2, case sensitive.
         public static Country GetCountryByAlpha2(string code)
         {
@@ -92,7 +114,7 @@
                 return null;
             }
 
-            return CountryList.FirstOrDefault(c => c.Alpha2 != null && c.Alpha2 == code);
+            return CountryList.FirstOrDefault(c => c.Alpha2 != CountryCode.None && c.Alpha2.ToString() == code);
         }
 
         // Get country by alpha3, case sensitive.
@@ -103,7 +125,7 @@
                 return null;
             }
 
-            return CountryList.FirstOrDefault(c => c.Alpha3 != null && c.Alpha3 == code);
+            return CountryList.FirstOrDefault(c => c.Alpha3 != CountryCodeAlpha3.None && c.Alpha3.ToString() == code);
         }
 
         // Get country by numeric.

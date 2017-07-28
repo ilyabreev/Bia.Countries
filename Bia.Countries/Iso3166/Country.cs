@@ -2,7 +2,8 @@ namespace Bia.Countries.Iso3166
 {
     public class Country
     {
-        public Country(string shortName, string fullName, string activeDirectoryName, string alpha2, string alpha3, int? numeric)
+        public Country(string shortName, string fullName, string activeDirectoryName, CountryCode alpha2, 
+            CountryCodeAlpha3 alpha3, int? numeric)
         {
             ShortName = shortName;
             FullName = fullName;
@@ -18,9 +19,9 @@ namespace Bia.Countries.Iso3166
 
         public string ActiveDirectoryName { get; }
 
-        public string Alpha2 { get; }
+        public CountryCode Alpha2 { get; }
 
-        public string Alpha3 { get; }
+        public CountryCodeAlpha3 Alpha3 { get; }
 
         public int? Numeric { get; }
 
@@ -41,14 +42,14 @@ namespace Bia.Countries.Iso3166
                 return FullName;
             }
 
-            if (!string.IsNullOrWhiteSpace(Alpha2))
+            if (!string.IsNullOrWhiteSpace(Alpha2.ToString()))
             {
-                return Alpha2;
+                return Alpha2.ToString();
             }
 
-            if (!string.IsNullOrWhiteSpace(Alpha3))
+            if (!string.IsNullOrWhiteSpace(Alpha3.ToString()))
             {
-                return Alpha3;
+                return Alpha3.ToString();
             }
 
             if (Numeric != null)

@@ -44,6 +44,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Iso3166\CountryCodes.cs" />
     <Compile Include="Iso3166\CountryList.cs" />
     <Compile Include="Iso3166\Countries.cs" />
     <Compile Include="Iso3166\Country.cs" />
