@@ -26,7 +26,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Bia.Countries\Bia.Countries.csproj">
+      <Name>Bia.Countries</Name>
+      <Project>{910253ae-ef55-4133-9cc4-41dc29067f2f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Bia.Countries.psd1" />
     <Compile Include="Bia.Countries.psm1" />
